@@ -1,0 +1,618 @@
+{% extends 'backend/base.html' %}
+{% block title %}Create Employee{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+                Order View <small>view order details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'home' %}">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="{% url 'employee' %}">Employee</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="{% url 'addemployee' %}">Create employee</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>Add New Employee
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body form" style="display: block;">
+           
+                  <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                      <div class="form-body">
+                          {% csrf_token %}
+                         
+                                              
+                          <div class="portlet-title">
+                                      
+                            <div class="caption font-green-haze">
+                                    <i class="fa fa-user"></i>&nbsp;
+                                <span class="caption-subject bold uppercase"> Basic Info </span>
+                            </div>
+                         
+                        </div>
+                        <hr>
+                          
+                            <div class="form-group">
+                                    <label class="col-md-3 control-label" for="{{basic_info.employee_code.label_for_id}}">{{basic_info.employee_code.label}}</label>
+                                    <div class="col-md-8">
+                                        {{basic_info.employee_code}}
+                                        <span class="text-danger">{{basic_info.employee_code.errors}}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.employee_name.label_for_id}}">{{basic_info.employee_name.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.employee_name}}
+                                            <span class="text-danger">{{basic_info.employee_name.errors}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label" for="{{basic_info.branch.label_for_id}}">{{basic_info.branch.label}}</label>
+                                            <div class="col-md-8">
+                                                {{basic_info.branch}}
+                                                <span class="text-danger">{{basic_info.basic_info.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.department.label_for_id}}">{{basic_info.department.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.department}}
+                                            <span class="text-danger">{{basic_info.department.errors}}</span>
+                                        </div>
+                                </div>
+                           
+                                 <div class="form-group">
+                                    <label class="col-md-3 control-label" for="{{basic_info.designation.label_for_id}}">{{basic_info.designation.label}}</label>
+                                    <div class="col-md-8">
+                                        {{basic_info.designation}}
+                                        <span class="text-danger">{{basic_info.designation.errors}}</span>
+                                    </div>
+                                 </div>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label" for="{{basic_info.father_name.label_for_id}}">{{basic_info.father_name.label}}</label>
+                                            <div class="col-md-8">
+                                                {{basic_info.father_name}}
+                                                <span class="text-danger">{{basic_info.father_name.errors}}</span>
+                                             </div>
+                                     </div>
+                                    <div class="form-group">
+                                                    <label class="col-md-3 control-label" for="{{basic_info.mother_name.label_for_id}}">{{basic_info.mother_name.label}}</label>
+                                                    <div class="col-md-8">
+                                                        {{basic_info.mother_name}}
+                                                <span class="text-danger">{{basic_info.mother_name.errors}}</span>
+                                                        </div>
+                                    </div>
+                               
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.date_of_birth.label_for_id}}">{{basic_info.date_of_birth.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.date_of_birth}}
+                                    <span class="text-danger">{{basic_info.date_of_birth.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.gender.label_for_id}}">{{basic_info.gender.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.gender}}
+                                    <span class="text-danger">{{basic_info.gender.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.national_id.label_for_id}}">{{basic_info.national_id.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.national_id}}
+                                    <span class="text-danger">{{basic_info.national_id.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.nationality.label_for_id}}">{{basic_info.nationality.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.nationality}}
+                                    <span class="text-danger">{{basic_info.nationality.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.blood_group.label_for_id}}">{{basic_info.blood_group.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.blood_group}}
+                                    <span class="text-danger">{{basic_info.blood_group.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.religion.label_for_id}}">{{basic_info.religion.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.religion}}
+                                    <span class="text-danger">{{basic_info.religion.errors}}</span>
+                                            </div>
+                                    </div>
+                                 
+                                 
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{basic_info.marital_status.label_for_id}}">{{basic_info.marital_status.label}}</label>
+                                        <div class="col-md-8">
+                                            {{basic_info.marital_status}}
+                                    <span class="text-danger">{{basic_info.marital_status.errors}}</span>
+                                            </div>
+                                    </div>
+                                  
+                                     <div class="form-group">
+                                            <label class="col-md-3 control-label">Photo</label>
+                                                <div class="col-md-8">
+                                                    <input type="file" id="inputFile" name="photo" class="form-control input-circle" placeholder="Enter text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                     </div>
+                                  
+                                     <div class="form-group">
+                                            <label class="col-md-3 control-label"></label>
+                                                <div class="col-md-8">
+                                                        <img id="image_upload_preview" style="width: 102px;
+                                                        height: 102px;" src="http://placehold.it/100x100"  alt="your image" />
+                                                <span class="help-block"></span>
+                                     </div>
+                                     </div>
+                                  
+                                 
+                                  
+                                 
+                                 
+                        
+                                <div class="portlet-title">
+                                      
+                                        <div class="caption font-green-haze">
+                                                <i class="fa fa-user"></i>&nbsp;
+                                            <span class="caption-subject bold uppercase"> Contact Information</span>
+                                        </div>
+                                     
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label"  for="{{contact_info.contact_number.label_for_id}}">{{contact_info.contact_number.label}}</label>
+                                                <div class="col-md-8">
+                                                    {{contact_info.contact_number}}
+                                    <span class="text-danger">{{contact_info.contact_number.errors}}</span>
+                                            </div>
+                                     </div>
+                                     <div class="form-group">
+                                            <label class="col-md-3 control-label" for="{{contact_info.contact_email.label_for_id}}">{{contact_info.contact_email.label}}</label>
+                                                <div class="col-md-8">
+                                                    {{contact_info.contact_email}}
+                                                    <span class="text-danger">{{contact_info.contact_email.errors}}</span>
+                                            </div>
+                                     </div>
+                                  
+                                     <div class="form-group">
+                                            <label class="col-md-3 control-label" for="{{contact_info.present_address.label_for_id}}">{{contact_info.present_address.label}}</label>
+                                                <div class="col-md-8">
+                                                    {{contact_info.present_address}}
+                                                    <span class="text-danger">{{contact_info.present_address.errors}}</span>
+                                            </div>
+                                     </div>
+                                     <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{contact_info.permanent_address.label_for_id}}">{{contact_info.permanent_address.label}}</label>
+                                            <div class="col-md-8">
+                                                {{contact_info.permanent_address}}
+                                                <span class="text-danger">{{contact_info.permanent_address.errors}}</span>
+                                        </div>
+                                     </div>
+                                 
+                                 
+                            
+                                   <div class="portlet-title">
+                                      
+                                        <div class="caption font-green-haze">
+                                                <i class="fa fa-user"></i>&nbsp;
+                                            <span class="caption-subject bold uppercase"> Bank Information</span>
+                                        </div>
+                                     
+                                    </div>
+                                    <hr>
+
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{bank_info.account_no.label_for_id}}">{{bank_info.account_no.label}}</label>
+                                            <div class="col-md-8">
+                                                {{bank_info.account_no}}
+                                                <span class="text-danger">{{bank_info.account_no.errors}}</span>
+                                        </div>
+                                     </div>
+                                 
+                                   
+                                     <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{bank_info.bank_name.label_for_id}}">{{bank_info.bank_name.label}}</label>
+                                            <div class="col-md-8">
+                                                {{bank_info.bank_name}}
+                                                <span class="text-danger">{{bank_info.bank_name.errors}}</span>
+                                        </div>
+                                     </div>
+                                     <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{bank_info.branch_name.label_for_id}}">{{bank_info.branch_name.label}}</label>
+                                            <div class="col-md-8">
+                                                {{bank_info.branch_name}}
+                                                <span class="text-danger">{{bank_info.branch_name.errors}}</span>
+                                        </div>
+                                     </div>  
+                               
+                                   
+                                
+                    
+                                   <div class="portlet-title">
+                                      
+                                        <div class="caption font-green-haze">
+                                                <i class="fa fa-user"></i>&nbsp;
+                                            <span class="caption-subject bold uppercase"> Joining Details</span>
+                                        </div>
+                                     
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{joining_info.offer_date.label_for_id}}">{{joining_info.offer_date.label}}</label>
+                                            <div class="col-md-8">
+                                                {{joining_info.offer_date}}
+                                                <span class="text-danger">{{joining_info.offer_date.errors}}</span>
+                                        </div>
+                                     </div> 
+                                     <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{joining_info.confirmation_date.label_for_id}}">{{joining_info.confirmation_date.label}}</label>
+                                            <div class="col-md-8">
+                                                {{joining_info.confirmation_date}}
+                                                <span class="text-danger">{{joining_info.confirmation_date.errors}}</span>
+                                        </div>
+                                     </div> 
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{joining_info.date_of_joining.label_for_id}}">{{joining_info.date_of_joining.label}}</label>
+                                            <div class="col-md-8">
+                                                {{joining_info.date_of_joining}}
+                                                <span class="text-danger">{{joining_info.date_of_joining.errors}}</span>
+                                        </div>
+                                     </div>  
+                               
+                                
+                                       
+                                     
+                              
+                                <div class="portlet-title">
+                                      
+                                        <div class="caption font-green-haze">
+                                                <i class="fa fa-user"></i>&nbsp;
+                                            <span class="caption-subject bold uppercase"> Quatification</span>
+                                        </div>
+                                     
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label">Quatification</label>
+                                                <div class="col-md-8">
+                                                        <div class=" text-right">
+                                                                <button class="add_field_button btn btn-primary"><i class="fa fa-plus-square"></i> Add More</button>
+                                                            </div>
+                                                            <br>
+                                                        <table class="table address">
+                                                                <thead>
+                                                                 <tr class="portlet purple box">
+                                                                    <th style="color: white;">Name Of Exam</th>
+                                                                    <th style="color: white;">Year Of Passing</th>
+                                                                    <th style="color: white;">Board</th>
+                                                                      <th style="color: white;">Grade</th>
+                                                                     
+                                                                       <!-- <th style="color: white; text-align: center;"><span> <i class="fa fa-plus-square"></i></span></th> -->
+                                                                   
+                                                                 </tr>
+                                                               </thead>
+                                                            </table>
+                                                            
+                                                      <div class="input_fields_wrap">
+                                                        <div class="row">
+                                                            <div class="col-sm-3">
+                                                                <input type="text"  id="company"  name="name_of_exam[]" class="form-control input-circle" placeholder="Name Of Exam" required/>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"  id="company"  name="year_of_passing[]" class="form-control input-circle" placeholder="Year Of Passing" required/>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"   id="company"  name="board[]" class="form-control input-circle" placeholder="Board" required/>
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <input type="text"   id="company"  name="grade[]" class="form-control input-circle" placeholder="Grade" required/>
+                                                            </div>
+                                                     
+                                                        </div>      
+                                                     </div>
+                                            </div>
+                                 </div>
+                                 <div class="portlet-title">
+                                      
+                                        <div class="caption font-green-haze">
+                                                <i class="fa fa-user"></i>&nbsp;
+                                            <span class="caption-subject bold uppercase"> Previous work experience</span>
+                                        </div>
+                                     
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                      <label class="col-md-3 control-label">Previous work experience</label>
+                                        <div class="col-md-8">
+                                         <div class=" text-right">
+                                            <button class="add_field_button2 btn btn-primary"><i class="fa fa-plus-square"></i> Add More</button>
+                                        </div>
+                                         <br>
+                                          <table class="table address">
+                                             <thead>
+                                               <tr class="portlet purple box">
+                                               <th style="color: white;">Company Name</th>
+                                               <th style="color: white;">Company Address</th>
+                                               <th style="color: white; padding-right: 41px;">Designation</th>
+                                               <th style="color: white;">Duration</th>
+                                      
+                                               <!-- <th style="color: white; text-align: center;"><span> <i class="fa fa-plus-square"></i></span></th> -->
+                                                                   
+                                              </tr>
+                                            </thead>
+                                          </table>
+                                                     
+                                          <div class="input_fields_wrap2">
+                                            <div class="row">
+                                                <div class="col-sm-3">
+                                                    <input type="text"  id="company"  name="company_name[]" class="form-control input-circle" placeholder="Company Name" required/>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text"  id="company"  name="company_address[]" class="form-control input-circle" placeholder="Company Address" required/>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text"   id="company"  name="designation[]" class="form-control input-circle" placeholder="Designation" required/>
+                                                </div>
+                                                <div class="col-sm-3">
+                                                    <input type="text"   id="company"  name="duration[]" class="form-control input-circle" placeholder="Duration" required/>
+                                                </div>
+                                         
+                                            </div>      
+                                         </div>
+                                            </div>
+                                 </div>
+                                 <div class="portlet-title">
+                                      
+                                        <div class="caption font-green-haze">
+                                                <i class="fa fa-user"></i>&nbsp;
+                                            <span class="caption-subject bold uppercase"> Personal Bio</span>
+                                        </div>
+                                     
+                                    </div>
+                                    <hr>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label">CV</label>
+                                                <div class="col-md-8">
+                                                    <input type="file" id="cv_file" class="form-control input-circle" name="cv_file" placeholder="Enter text">
+                                                <span class="help-block"></span>
+                                            </div>
+                                     </div>
+                                  
+                                     <div class="form-group">
+                                            <label class="col-md-3 control-label"></label>
+                                                <div class="col-md-8">
+                                                        <img id="cv_upload_preview" style="width: 102px;height: 102px;" src="http://placehold.it/100x100"  alt="your image" />
+                                                <span class="help-block"></span>
+                                     </div>
+                                     </div>
+     
+   
+
+
+                        </div>
+        
+                 <div class="form-actions margin-top-10">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                              
+                                <button type="submit" class="btn purple">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inputFile").change(function () {
+        readURL(this);
+    });
+
+    function cvURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#cv_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#cv_file").change(function () {
+        cvURL(this);
+    });
+</script>
+
+
+
+<script type="text/javascript">
+
+    $(document).ready(function() {
+      var max_fields      = 10; //maximum input boxes allowed
+      var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+      var add_button      = $(".add_field_button"); //Add button ID
+  
+      var x = 1; //initlal text box count
+      $(add_button).click(function(e){ //on add input button click
+          e.preventDefault();
+          if(x <= max_fields){ //max input box allowed
+              x++; //text box increment
+              $(wrapper).append("<div style='line-height: 40px;'>\
+                            <table style='margin-top: -25px;'>\
+                            <tr>\
+                            <td>\
+                                <input type=\"text\" style='width: 144px;'  id=\"company\"  name=\"name_of_exam[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            <td>\
+                                <input type=\"text\" style='margin-left:20px;width: 144px;'  id=\"year_of_passing\"  name=\"year_of_passing[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            <td>\
+                                <input type=\"text\" style='margin-left:26px;width: 144px;'  id=\"board\"  name=\"board[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            <td>\
+                                <input type=\"text\" style='margin-left:26px;width: 144px;' id=\"grade\"  name=\"grade[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            </tr>\
+                            <button class='btn btn-danger remove_field' style='width: 40px;margin-left: 670px;margin-bottom: -28px;'><i class=\"fa fa-trash\"></i></button>\
+                            </table>\</div>"); //add input box
+          }
+          else
+          {
+                  swal("Sorry!", "Only 10 Fields Allowed!", "error");
+          }
+      });
+  
+      $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+  });
+  </script>
+
+  
+<script type="text/javascript">
+
+    $(document).ready(function() {
+    
+      var max_fields      = 10; //maximum input boxes allowed
+      var wrapper         = $(".input_fields_wrap2"); //Fields wrapper
+      var add_button      = $(".add_field_button2"); //Add button ID
+  
+      var x = 1; //initlal text box count
+      $(add_button).click(function(e){ //on add input button click
+          e.preventDefault();
+          if(x <= max_fields){ //max input box allowed
+              x++; //text box increment
+              $(wrapper).append("<div style='line-height: 40px;'>\
+                            <table style='margin-top: -25px;'>\
+                            <tr>\
+                            <td>\
+                                <input type=\"text\" style='width: 144px;'  id=\"company_name\"  name=\"company_name[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            <td>\
+                                <input type=\"text\" style='margin-left:20px;width: 144px;'  id=\"company_address\"  name=\"company_address[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            <td>\
+                                <input type=\"text\" style='margin-left:26px;width: 144px;'  id=\"designation\"  name=\"designation[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            <td>\
+                                <input type=\"text\" style='margin-left:26px;width: 144px;' id=\"duration\"  name=\"duration[]\" class=\"form-control input-circle\" placeholder=\"Degree Name\" required/>\
+                            </td>\
+                            </tr>\
+                            <button class='btn btn-danger remove_field2' style='width: 40px;margin-left: 670px;margin-bottom: -28px;'><i class=\"fa fa-trash\"></i></button>\
+                            </table>\</div>"); //add input box
+          }
+          else
+          {
+                  swal("Sorry!", "Only 10 Fields Allowed!", "error");
+          }
+      });
+  
+      $(wrapper).on("click",".remove_field2", function(e){ //user click on remove text
+          e.preventDefault(); $(this).parent('div').remove(); x--;
+      })
+
+      $('#designation').html('<option>First Select Departement</option>');
+
+      $('#department').change(function(){
+          var department=$(this).val();
+          var csrf='{{ csrf_token }}';
+          $.ajax({
+              url:"{% url 'get_designation' %}",
+              method:'POST',
+              data:{'department':department,'csrfmiddlewaretoken':csrf},
+              success:function(data)
+              {
+                  if(data.length >0)
+                  {
+                    $('#designation').html('<option>-Select Designation-</option>');
+                    for(i=0;i<data.length;i++)
+                    {
+                        console.log(data[i]);
+                        $('#designation').append("<option value='"+data[i].pk+"'>"+data[i].fields.designation_name+"</option>");
+                    }
+                  }
+                  else
+                  {
+                    $('#designation').html('<option>NO Data Found</option>');
+                  }
+                // 
+               
+              }
+          });
+      });
+  });
+  </script>
+
+
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->{% endblock %}

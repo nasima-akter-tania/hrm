@@ -1,0 +1,91 @@
+{% extends 'backend/base.html' %}
+{% block title %}Branch{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+                Branch <small>view branch details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'home' %}">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="{% url 'branch' %}">branch</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">edit</a>
+                        </li>
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>Branch Edit Form
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body" style="display: block;">
+                  <form action="" method="POST">
+                      <div class="form-body">
+                          {% csrf_token %}
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">Branch Name</label>
+                            {{form.branch_name}}
+                            <!-- <input type="text" class="form-control" placeholder="Branch name...."> -->
+                          </div>
+                      
+                            <div class="form-group">
+                              <label>Status</label>
+                              {{form.branch_status}}
+                          </div>
+                        </div>
+                  <div class="form-actions right">
+                
+                    <button type="submit" class="btn purple mt-ladda-btn">Submit</button>
+                  </div>
+
+                </form>
+              </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

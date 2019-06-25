@@ -1,0 +1,140 @@
+{% extends 'backend/base.html' %}
+{% block title %}Branch{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <!-- BEGIN THEME PANEL -->
+        <!-- END THEME PANEL -->
+        <!-- BEGIN PAGE BAR -->
+        <div class="page-bar">
+            <ul class="page-breadcrumb">
+                <li>
+                    <a href="{% url 'home' %}">Home</a>
+                    <i class="fa fa-circle"></i>
+                </li>
+                <li>
+                    <span>Tables</span>
+                </li>
+            </ul>
+           
+        </div>
+        <!-- END PAGE BAR -->
+        <!-- BEGIN PAGE TITLE-->
+        <h3 class="page-title"> Branch Datatables
+            <small>This is Branch area.</small>
+        </h3>
+        <!-- END PAGE TITLE-->
+        <!-- END PAGE HEADER-->
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <div class="row">
+                       
+                    
+                            <!-- BEGIN BORDERED TABLE PORTLET-->
+                            <div class="portlet light portlet-fit bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-bubble font-dark"></i>
+                                        <span class="caption-subject font-dark bold uppercase">Branch Table</span>
+                                    </div>
+                                    <div class="actions">
+                                        <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-plus"></i>
+                                            Create New Branch
+                                          </button>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Create Branch</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <form action="" method="POST">
+                                                  {% csrf_token %}
+                                                    <div class="form-group">
+                                                      <label for="exampleInputEmail1">Branch Name</label>
+                                                      {{form.branch_name}}
+                                                     <div class="text-danger">{{form.branch_name.errors}}</div>
+                                                    </div>
+                                          
+                                                      <div class="form-group">
+                                                        <label>Status</label>
+                                                        {{form.branch_status}}
+                                                        <div class="text-danger">{{form.branch_name.errors}}</div>
+                                                    </div>
+                                                    
+                                          
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                  <button type="submit" name="submit" class="btn btn-success">Save</button>
+                                                </div>
+                                              </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-scrollable">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th> Id </th>
+                                                    <th> Branch Name </th>
+                                                    <th> Status </th>
+                                                    <th> Action </th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                    {% for branch_data in branch %}
+                                                <tr>
+                                                    <td>{{forloop.counter}}</td>
+                                                    <td>{{branch_data.branch_name}}</td>
+                                                    <td>
+                                                        {% if branch_data.branch_status == "Active" %}
+                                                         <span style="color:royalblue">{{branch_data.branch_status}}</span>
+                                                        {% else %}
+                                                          <span style="color:blueviolets">{{branch_data.branch_status}}</span>
+                                                         {% endif %} 
+                                                     </td>
+                                                    <td>
+                                                        <a href="{% url 'branch_update' branch_data.id %}"
+                                                        class="btn purple mt-ladda-btn ladda-button btn-circle" data-style="slide-left">
+                                                            <span class="ladda-label">Edit</span>
+                                                        <span class="ladda-spinner"></span>
+                                                        </a>
+                                                       
+                                                        <a href="{% url 'branch_delete' branch_data.id %}" onclick="return confirm('Are You Sure?')" 
+                                                        class="btn red mt-ladda-btn ladda-button btn-circle" data-style="slide-right">
+                                                            <span class="ladda-label">Delete</span>
+                                                        <span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0px;"></div>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                              
+                                                {% endfor %}
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END BORDERED TABLE PORTLET-->
+                      
+                    </div>
+                 
+                   
+                    
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+           {% endblock %}

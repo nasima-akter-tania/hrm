@@ -1,0 +1,133 @@
+{% extends 'backend/base.html' %}
+{% block title %}Settings{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+                    General Settings <small>view general settings details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'home' %}">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">settings</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">general settings</a>
+                        </li>
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>General Settings Form
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body" style="display: block;">
+                    <form action="" method="POST"  enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                                <label for="exampleInputEmail1">Email</label>
+                               {{form.email}}
+                               <div class="text-danger">{{form.email.errors}}</div>
+                              </div>
+
+                                <div class="form-group">
+                                  <label for="exampleInputEmail1">Contact Number</label>
+                                 {{form.contact_no}}
+                                 <div class="text-danger">{{form.email.errors}}</div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Company Name</label>
+                                   {{form.company_name}}
+                                   <div class="text-danger">{{form.email.errors}}</div>
+                                  </div>
+                                  
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Company Address</label>
+                                   {{form.company_address}}
+                                   <div class="text-danger">{{form.email.errors}}</div>
+                                  </div>
+                                  <div class="form-group">
+                                      <label for="exampleInputEmail1">Company Logo</label>
+                                     <input  type="file" id="inputFile" name="logo" value="{{settings_data.logo}}" class='form-control input-circle'>
+                                   
+                                    </div>
+                                    <div class="form-group">
+                                        <label  for="exampleInputEmail1"></label>
+                                         <img id="image_upload_preview" src="{{settings_data.logo.url}}" style="width: 102px;
+                                                    height: 102px;"   alt="your image" />
+                                
+                                 </div>
+                                 
+                          
+                
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-success">Save</button>
+                      </div>
+                    </div>
+                    </form>
+              </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                $('#image_upload_preview').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#inputFile").change(function () {
+        readURL(this);
+    });
+  </script>
+{% endblock %}

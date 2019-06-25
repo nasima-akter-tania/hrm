@@ -1,0 +1,359 @@
+{% extends 'backend/base.html' %}
+{% block title %}Create Employee{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+                Order View <small>view order details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'home' %}">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="{% url 'employee' %}">Employee</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="{% url 'addemployee' %}">Create employee</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>Employee Information View
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body form" style="display: block;">
+                        <div class="row">
+                                <div class="col-sm-8">
+                                  <div class="col-sm-4"></div>
+                                  <div class="col-sm-8">
+                                 <h3><b> <u>{{employee_personal.employee_name}}</u></b></h3>
+                                 <p><b> <u>Contact & Address</u></b></p>
+                                 <p style="margin-top: -17px;">Cell NO : {{employee_contact.contact_number}}</p>
+                                 <p style="margin-top: -17px;">E-Mail : {{employee_contact.contact_email}}</p>
+                                 <p style="margin-top: -17px;">Parmanent Address : {{employee_contact.permanent_address}}</p>
+                                 <p style="margin-top: -17px;">Present Address : {{employee_contact.present_address}}</p>
+                                 </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="col-sm-4">
+                                  <img src="{{employee_personal.photo.url}}" alt="Employee Image" style="border: 1px solid;
+                                  margin-top: 42px;margin-left: -53px;margin-bottom: 5px;" height="148" width="150">
+                                    </div>
+                                  <div class="col-sm-4"></div>
+                                </div>
+                             
+                         </div>
+                         <div style="border:1px solid black;width: 717px;margin-left: 117px;"></div>
+                         <div class="row">
+                            <div class="col-sm-1"></div>
+
+                            <div class="col-sm-10">
+                              <h3 style="text-align:center;">Basic Info</h3>
+                              <hr>
+                              <table class="table" border="1">
+                             
+                                <tbody>
+                                  <tr>
+                                   
+                                    <th scope="row">Employee Code</th>
+                                    <td>{{employee_personal.employee_code}}</td>
+                                
+                                  </tr>
+                                 
+                                    <tr>
+                                        
+                                        <th scope="row">Branch </th>
+                                        <td>
+                                          {{employee_personal.branch.branch_name}}
+                                        </td>
+                                      </tr>
+                                      <tr>
+                                         
+                                          <th scope="row">Depratment </th>
+                                          <td>
+                                              {{employee_personal.department.department_name}}
+                                          </td>
+                                        </tr> 
+                                        <tr>
+                                           
+                                            <th scope="row">Designation </th>
+                                            <td>
+                                                {{employee_personal.designation.designation_name}}
+        
+                                            </td>
+                                          </tr>
+                                          <tr>
+                                            
+                                              <th scope="row">Father's Name </th>
+                                              <td>
+                                                  {{employee_personal.father_name}}
+          
+                                              </td>
+                                            </tr>
+                                            <tr>
+                                              
+                                                <th scope="row">Mother's Name </th>
+                                                <td>
+                                                    {{employee_personal.mother_name}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                               
+                                                <th scope="row">Date Of Birth </th>
+                                                <td>
+                                                    {{employee_personal.date_of_birth|date:'M d Y'}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              
+                                                <th scope="row">Gender</th>
+                                                <td>
+                                                    {{employee_personal.gender}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              
+                                                <th scope="row">National Id</th>
+                                                <td>
+                                                    {{employee_personal.national_id}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <th scope="row">Nationality</th>
+                                                <td>
+                                                    {{employee_personal.nationality}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                
+                                                <th scope="row">Blood Group</th>
+                                                <td>
+                                                    {{employee_personal.blood_group}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                              
+                                                <th scope="row">Religion</th>
+                                                <td>
+                                                    {{employee_personal.religion}}
+            
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                               
+                                                <th scope="row">Marital Status</th>
+                                                <td>
+                                                    {{employee_personal.marital_status}}
+     
+            
+                                                </td>
+                                            </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                            <div class="col-sm-1"></div>
+                         
+                     </div>
+                     <div class="row">
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-10">
+                          <h3 style="text-align:center;">Joining Details</h3>
+                          <hr>
+                          <table class="table" border="1">
+                         
+                            <tbody>
+                              <tr>
+                               
+                                <th scope="row">Offer Date</th>
+                                <td>{{joining_info.offer_date|date:'M d Y'}}</td>
+                            
+                              </tr>
+                             
+                                <tr>
+                                    
+                                    <th scope="row">Confirmation Date </th>
+                                    <td>
+                                      {{joining_info.confirmation_date|date:'M d Y'}}
+                                    </td>
+                                  </tr>
+                                  <tr>
+                                     
+                                      <th scope="row">Date Of Joining </th>
+                                      <td>
+                                          {{joining_info.date_of_joining|date:'M d Y'}}
+                                      </td>
+                                    </tr> 
+                                 
+                                     
+                                        
+                                    
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-sm-1"></div>
+                     
+                 </div>
+                 <div class="row">
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-10">
+                      <h3 style="text-align:center;">Bank Details</h3>
+                      <hr>
+                      <table class="table" border="1">
+                     
+                        <tbody>
+                          <tr>
+                           
+                            <th scope="row">Bank Name</th>
+                            <td>{{bank_info.bank_name}}</td>
+                        
+                          </tr>
+                         
+                            <tr>
+                                
+                                <th scope="row">Branch Name </th>
+                                <td>
+                                    {{bank_info.branch_name}}
+                                </td>
+                              </tr>
+                              <tr>
+                                 
+                                  <th scope="row">Account No</th>
+                                  <td>
+                                      {{bank_info.account_no}}
+                                  </td>
+                                </tr> 
+                             
+                                 
+                                    
+                                
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-sm-1"></div>
+                 
+             </div>
+                     <div class="row">
+                        <div class="col-sm-1"></div>
+
+                        <div class="col-sm-10">
+                          <h3 style="text-align:center;"> Education</h3>
+                          <hr>
+                          <table class="table" border="1">
+                              <thead>
+                                  <tr>
+                                    
+                                    <th scope="col">Name Of Exam</th>
+                                    <th scope="col">Year Of Passing</th>
+                                    <th scope="col">Board</th>
+                                    <th scope="col">Grade</th>
+                                  </tr>
+                                </thead>
+                            <tbody>
+                              {% for qulification_fetch in qualification %}
+                              <tr>
+                               
+                              
+                                <td>{{qulification_fetch.name_of_exam}}</td>
+                                <td>{{qulification_fetch.year_of_passing}}</td>
+                                <td>{{qulification_fetch.board}}</td>
+                                <td>{{qulification_fetch.grade}}</td>
+                            
+                              </tr>
+                              {% endfor %}
+                                    
+                            </tbody>
+                          </table>
+                        </div>
+                        <div class="col-sm-1"></div>
+                     
+                 </div>
+                 <div class="row">
+                    <div class="col-sm-1"></div>
+
+                    <div class="col-sm-10">
+                      <h3 style="text-align:center;">Previous Work Experience</h3>
+                      <hr>
+                      <table class="table" border="1">
+                          <thead>
+                              <tr>
+                                
+                                <th scope="col">Name Of Exam</th>
+                                <th scope="col">Year Of Passing</th>
+                                <th scope="col">Board</th>
+                                <th scope="col">Grade</th>
+                              </tr>
+                            </thead>
+                        <tbody>
+                          {% for data_fetch in work_experience %}
+                          <tr>
+                           
+                          
+                            <td>{{data_fetch.company_name}}</td>
+                            <td>{{data_fetch.designation}}</td>
+                            <td>{{data_fetch.duration}}</td>
+                            <td>{{data_fetch.company_address}}</td>
+                         
+                        
+                          </tr>
+                          {% endfor %}
+                                
+                        </tbody>
+                      </table>
+                    </div>
+                    <div class="col-sm-1"></div>
+                 
+             </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,158 @@
+{% extends 'backend/base.html' %}
+{% block title %}Employee Report{% endblock title %}
+{% block content %}
+{% load static %}
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEADER-->
+        <!-- BEGIN THEME PANEL -->
+        <!-- END THEME PANEL -->
+        <!-- BEGIN PAGE BAR -->
+        <h3 class="page-title">
+            Employee Report <small>view employee report details</small>
+            </h3>
+            <div class="page-bar">
+                <ul class="page-breadcrumb">
+                    <li>
+                        <i class="fa fa-home"></i>
+                        <a href="{% url 'home' %}">Home</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    <li>
+                        <a href="{% url 'total_employee' %}">Employee Report</a>
+                        <i class="fa fa-angle-right"></i>
+                    </li>
+                    
+                </ul>
+              
+            </div>
+<div class="row">
+
+<style type="text/css">
+.view {
+    border: 1px solid white;
+    width: 191px;
+    height: 30px;
+    padding: 5px;
+    text-align: center;
+    background:#49237b;
+    color: white;
+    margin-left: 5px;
+}
+.view:hover{
+        background: white;
+        color: black;
+    }
+</style>
+
+
+
+
+<!-- BEGIN BORDERED TABLE PORTLET-->
+        <div class="col-md-12" style="margin-top: 25px;">
+          <!-- BEGIN ALERTS PORTLET-->
+          
+            
+            <div class="portlet-body form" style="display: block;"></div>
+       
+              <!-- <form action="" method="POST" class="form-horizontal"> -->
+                  <div class="form-body">
+                      <!-- {% csrf_token %} -->
+                     
+
+                    <div class="main-content">
+
+                        <div style="display: inline-flex;width: 81%;">
+                        
+                        <div class="view">BRANCH NAME</div>
+                        <div class="view">DEPARTMENT</div>    
+                        </div>
+                        <div style="display: -webkit-box;">
+                       
+                        
+                        <div class="form-group">
+                        <div class="col-sm-2">
+                        <select type="text" class="form-control branch_name" id='branch_name_id' style="width: 191px;margin-left: -10px;">
+                            <option value="">--Select--</option>
+                            {% for branch_fetch in branch%}
+                                <option value="{{branch_fetch.pk}}">{{branch_fetch.branch_name}}</option>
+                            {% endfor %}    
+                        </select>
+                        </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
+                        <div class="col-sm-2">
+                        <select type="text" class="form-control department" style="width: 191px;
+                        margin-left: -25px;">
+                        <option value="">--Select--</option>
+                        {% for department_fetch in department%}
+                           <option value="{{department_fetch.pk}}">{{department_fetch.department_name}}</option>
+                        {% endfor %}   
+                        </select>
+                        </div>
+                        </div>
+                                        
+                        <div class="form-group">
+                        <div class="col-sm-2" style="margin-left: -18px;">
+                        <button class="btn purple mt-ladda-btn ladda-button employee_search"><i class="fa fa-search"></i></button>
+                        </div>
+                        </div>
+                        </div>
+                        <div style="text-align: center;">
+                        <img class="loader" src="{% static 'backend/assets/loader.gif'%}" style="height: 20px;display: none;">
+                        </div>
+                        <br><br><br>
+                        <div class="report_data_show"></div>
+                        </div>
+
+                
+             
+            </form>
+         
+          <!-- END ALERTS PORTLET-->
+        </div>
+
+</div>
+
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".employee_search").unbind().click(function() {
+            $('html,body').css('cursor','wait');
+            $("html").css({ 'background-color' : 'black', 'opacity' : '0.5' });
+             $(".loader").show();
+
+            var branch_name=$(".branch_name").val();
+            var department=$(".department").val();
+           
+            setTimeout(function(){
+                $.ajax({
+                        url:"{% url 'get_employee_for_report' %}",
+                        type:"POST",
+                        data:{
+                            'branch_name':branch_name,
+                            'department':department,
+                            'csrfmiddlewaretoken':"{{csrf_token}}"
+                        },
+                        success:function(data) {
+                            console.log(data);
+                            $(".report_data_show").html(data);
+                        }
+
+                });
+                $('html,body').css('cursor','default');
+                $("html").css({ 'background-color' : '', 'opacity' : '' });
+                 $(".loader").hide();
+            }, 2000);
+
+
+
+        });
+    });
+</script>
+{% endblock %}

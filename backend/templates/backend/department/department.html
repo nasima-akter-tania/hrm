@@ -1,0 +1,154 @@
+{% extends 'backend/base.html' %}
+{% block title %}Department{% endblock title %}
+{% block content %}
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <!-- BEGIN THEME PANEL -->
+                    <!-- END THEME PANEL -->
+                    <!-- BEGIN PAGE BAR -->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="{% url 'home' %}">Home</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <span>Tables</span>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                    <!-- END PAGE BAR -->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h3 class="page-title"> Department Datatables
+                        <small>This is department area.</small>
+                    </h3>
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <div class="row">
+                       
+                    
+                            <!-- BEGIN BORDERED TABLE PORTLET-->
+                            <div class="portlet light portlet-fit bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-bubble font-dark"></i>
+                                        <span class="caption-subject font-dark bold uppercase">Department Table</span>
+                                    </div>
+                                    <div class="actions">
+                                        <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-plus"></i>
+                                            Create New Department
+                                          </button>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Create Department</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <form action="" method="POST">
+                                                  {% csrf_token %}
+                                                    <div class="form-group">
+                                                      <label for="exampleInputEmail1">Department Name</label>
+                                                      {{form.department_name}}
+                                                    </div>
+                                          
+                                                      <div class="form-group">
+                                                        <label>Status</label>
+                                                        {{form.department_status}}
+                                                    </div>
+                                                    
+                                          
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                  <button type="submit" name="submit" class="btn btn-success">Save</button>
+                                                </div>
+                                              </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-scrollable">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th> Id </th>
+                                                    <th> Department Name </th>
+                                                    <th> Status </th>
+                                                    <th> Action </th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <!-- <tr>
+                                                    <td rowspan="2"> 1 </td>
+                                                    <td> Computer </td>
+                                                    <td> <span class="label label-sm label-success"> Active </span> </td>
+                                                    <td>
+                                                        <button type="button" class="btn purple mt-ladda-btn ladda-button btn-circle" data-style="slide-left">
+                                                            <span class="ladda-label">Edit</span>
+                                                        <span class="ladda-spinner"></span>
+                                                       </button>
+
+                                                        <button type="button" class="btn red mt-ladda-btn ladda-button btn-circle" data-style="slide-right">
+                                                            <span class="ladda-label">Delete</span>
+                                                        <span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0px;"></div>
+                                                        </button>
+                                                    </td>
+                                                </tr> -->
+                                              
+                                                {% for department_data in department %}
+                                                <tr>
+                                                    <td>{{forloop.counter}}</td>
+                                                    <td>{{department_data.department_name}}</td>
+                                                    <td>
+                                                        {% if department_data.department_status == "Active" %}
+                                                         <span style="color:royalblue">{{department_data.department_status}}</span>
+                                                        {% else %}
+                                                          <span style="color:blueviolet">{{department_data.department_status}}</span>
+                                                         {% endif %} 
+                                                     </td>
+                                                    <td>
+                                                        <a href="{% url 'department_update' department_data.id %}"
+                                                        class="btn purple mt-ladda-btn ladda-button btn-circle" data-style="slide-left">
+                                                            <span class="ladda-label">Edit</span>
+                                                        <span class="ladda-spinner"></span>
+                                                        </a>
+                                                       
+                                                       
+                                                        <a href="{% url 'department_delete' department_data.id %}" onclick="return confirm('Are You Sure?')" 
+                                                        class="btn red mt-ladda-btn ladda-button btn-circle" data-style="slide-right">
+                                                            <span class="ladda-label">Delete</span>
+                                                        <span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0px;"></div>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                              
+                                                {% endfor %}
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END BORDERED TABLE PORTLET-->
+                      
+                    </div>
+                 
+                   
+                    
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+           {% endblock %}

@@ -1,0 +1,224 @@
+{% extends 'backend/base.html' %}
+{% block title %}Transfer{% endblock title %}
+{% block content %}
+            <div class="page-content-wrapper">
+                <!-- BEGIN CONTENT BODY -->
+                <div class="page-content">
+                    <!-- BEGIN PAGE HEADER-->
+                    <!-- BEGIN THEME PANEL -->
+                    <!-- END THEME PANEL -->
+                    <!-- BEGIN PAGE BAR -->
+                    <div class="page-bar">
+                        <ul class="page-breadcrumb">
+                            <li>
+                                <a href="{% url 'home' %}">Home</a>
+                                <i class="fa fa-circle"></i>
+                            </li>
+                            <li>
+                                <span>Tables</span>
+                            </li>
+                        </ul>
+                       
+                    </div>
+                    <!-- END PAGE BAR -->
+                    <!-- BEGIN PAGE TITLE-->
+                    <h3 class="page-title"> Transfer Datatables
+                        <small>This is Transfer area.</small>
+                    </h3>
+                    <!-- END PAGE TITLE-->
+                    <!-- END PAGE HEADER-->
+                    <div class="row">
+                       
+                    
+                            <!-- BEGIN BORDERED TABLE PORTLET-->
+                            <div class="portlet light portlet-fit bordered">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="icon-bubble font-dark"></i>
+                                        <span class="caption-subject font-dark bold uppercase">Transfer Table</span>
+                                    </div>
+                                    <div class="actions">
+                                        <button type="button" class="btn btn-primary btn-sm float-right" data-toggle="modal" data-target="#exampleModal">
+                                            <i class="fa fa-plus"></i>
+                                            Create New Transfer
+                                          </button>
+                                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                              <div class="modal-content">
+                                                <div class="modal-header">
+                                                  <h5 class="modal-title" id="exampleModalLabel">Create Transfer</h5>
+                                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                  </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                <form action="" method="POST">
+                                                  {% csrf_token %}
+                                                  <div class="form-group">
+                                                    <label for="exampleInputEmail1">Employee Code</label>
+                                                   {{form.employee_code}}
+                                                   <div class="text-danger">{{form.employee_code.errors}}</div>
+                                                  </div>
+                                                  <div class="form-group">
+                                                        <label class="col-md-3 control-label" > Employee Name</label>
+                                                            <input type="text" class='form-control input-circle' id="employee_name_show" readonly >  
+                                                    
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Issue Date </label>
+                                                        {{form.issue_date}}
+                                                        <div class="text-danger">{{form.employee_code.errors}}</div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Previous Branch</label>
+                                                        {{form.previous_branch}}
+                                                        <div class="text-danger">{{form.employee_code.errors}}</div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label for="exampleInputEmail1">Previous Department</label>
+                                                        {{form.previous_department}}
+                                                        <div class="text-danger">{{form.employee_code.errors}}</div>
+                                                    </div>
+                                          
+                                                      <div class="form-group">
+                                                        <label>Present Branch</label>
+                                                      {{form.present_branch}}
+                                                      <div class="text-danger">{{form.employee_code.errors}}</div>
+                                                    </div>
+
+                                                    <div class="form-group">
+                                                        <label>Present Department</label>
+                                                      {{form.present_department}}
+                                                      <div class="text-danger">{{form.employee_code.errors}}</div>
+                                                    </div>
+                                          
+                                                </div>
+                                                <div class="modal-footer">
+                                                  <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                                                  <button type="submit" name="submit" class="btn btn-success">Save</button>
+                                                </div>
+                                                
+                                              </div>
+                                              </form>
+                                            </div>
+                                          </div>
+                                    </div>
+                                </div>
+                                <div class="portlet-body">
+                                    <div class="table-scrollable">
+                                        <table class="table table-bordered table-hover">
+                                            <thead>
+                                                <tr>
+                                                    <th> Id </th>
+                                                    <th> Employee<br>Code </th>
+                                                    <th> Issue<br>Date  </th>
+                                                    <th>  Previous<br>Branch </th>
+                                                    <th> Previous<br>Department </th>
+                                                    <th> Present<br>Branch </th>
+                                                    <th> Present<br>Department </th>
+                                                    <th> Action </th>
+                                                   
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {% for transfer_data in transfer %}
+                                                <tr>
+                                                    <td>{{forloop.counter}}</td>
+                                                    <td>{{transfer_data.employee_code}}</td>
+                                                    <td>{{transfer_data.issue_date|date:'F d Y'}}</td>
+                                                    <td>{{transfer_data.previous_branch}}</td>
+                                                    <td>{{transfer_data.previous_department}}</td>
+                                                    <td>{{transfer_data.present_branch}}</td>
+                                                    <td>{{transfer_data.present_department}}</td>
+                                                    
+                                                    <td>
+                                                        <a href="{% url 'transfer_update' transfer_data.id %}"
+                                                        class="btn purple mt-ladda-btn ladda-button btn-circle" data-style="slide-left">
+                                                            <span class="ladda-label">Edit</span>
+                                                        <span class="ladda-spinner"></span>
+                                                        </a>
+                                                       
+                                                        <a href="{% url 'transfer_delete' transfer_data.id %}" onclick="return confirm('Are You Sure?')" 
+                                                        class="btn red mt-ladda-btn ladda-button btn-circle" data-style="slide-right">
+                                                            <span class="ladda-label">Delete</span>
+                                                        <span class="ladda-spinner"></span><div class="ladda-progress" style="width: 0px;"></div>
+                                                        </a>
+                                                    </td>
+                                                </tr>
+                                              
+                                                {% endfor %}
+                                               
+                                                
+                                               
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- END BORDERED TABLE PORTLET-->
+                      
+                    </div>
+                 
+                   
+                    
+                </div>
+                <!-- END CONTENT BODY -->
+            </div>
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->
+
+
+
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 
+            <script type="text/javascript">
+            
+              $(document).ready(function() {
+            
+                
+                $('#employee_code_id').keyup(function(){
+                    var employee_code=$(this).val();
+                    // var department=$('#department').val();
+                   
+                    // alert(employee_code)
+                    var csrf='{{ csrf_token }}';
+                  
+                    $.ajax({
+                        url:"{% url 'get_employee_data' %}",
+                        method:'POST',
+                        data:{'employee_code':employee_code,'csrfmiddlewaretoken':csrf},
+                        success:function(data)
+                        {
+                            if(data.length>0)
+                            {
+                                console.log(data);
+                              
+                                for (i=0;i<data.length;i++)
+                                {
+                                    $('#employee_name_show').val(data[i].fields.employee_name);
+                                    $('#previous_department').val(data[i].fields.branch.branch_name);
+                                    $('#previous_branch').val(data[i].fields.department.department_name);
+
+
+                                }
+                            }
+                            else{
+                                $('#employee_name_show').val('');
+                                $('#previous_branch').val('');
+                                $('#previous_department').val('');
+                            }
+                         
+                          
+                          
+                         
+                        }
+                    });
+                  
+                });
+            });
+            </script>
+            
+
+           {% endblock %}

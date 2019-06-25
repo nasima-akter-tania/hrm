@@ -1,0 +1,117 @@
+{% extends 'backend/base.html' %}
+{% block title %}Transfer{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+               Transfer <small>view transfer details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'home' %}">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Transfer</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Edit</a>
+                        </li>
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>Tranfer Edit Form
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body" style="display: block;">
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Employee Code</label>
+                           {{form.employee_code}}
+                           <div class="text-danger">{{form.employee_code.errors}}</div>
+                          </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Issue Date </label>
+                                {{form.issue_date}}
+                                <div class="text-danger">{{form.employee_code.errors}}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Previous Branch</label>
+                                {{form.previous_branch}}
+                                <div class="text-danger">{{form.employee_code.errors}}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Previous Department</label>
+                                {{form.previous_department}}
+                                <div class="text-danger">{{form.employee_code.errors}}</div>
+                            </div>
+                  
+                              <div class="form-group">
+                                <label>Present Branch</label>
+                              {{form.present_branch}}
+                              <div class="text-danger">{{form.employee_code.errors}}</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Present Department</label>
+                              {{form.present_department}}
+                              <div class="text-danger">{{form.employee_code.errors}}</div>
+                            </div>
+                          
+                
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                        <button type="submit" name="submit" class="btn btn-success">Save</button>
+                      </div>
+                    </div>
+                    </form>
+              </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+
+
+
+{% endblock %}

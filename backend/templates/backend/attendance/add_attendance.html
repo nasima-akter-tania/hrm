@@ -1,0 +1,276 @@
+{% extends 'backend/base.html' %}
+{% block title %}Attendance{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+                Add Attendance <small>view attendance details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="{% url 'home' %}">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="{% url 'atttendance_report' %}">Attendance Report</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Add Attendance</a>
+                        </li>
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>Add Attendance
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body form" style="display: block;">
+           
+                  <form action="" method="POST" class="form-horizontal">
+                      <div class="form-body">
+                          {% csrf_token %}
+                         
+
+											<div class="form-group">
+
+
+											
+										
+                                                    <div class="col-sm-9 col-sm-offset-2">
+                                                        <br>
+                                                         <h3 style="text-align: center;">Mark Your Attendance</h3>
+                                                         <hr>
+                                                        <table class="table address" >
+                                                         <thead>
+                                                          <tr class="portlet purple box">
+                                                             <th style="color: white; text-align: center;">
+                                                                 Department
+                                                             </th>
+                                                             <th style="color: white; text-align: center;">
+                                                             Date
+                                                             </th>
+                                                           
+                                                          </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                         <tr>
+                                                     
+                                                          <td>
+                                                         
+
+                                                           {{attendance_form.department}}
+                                                     
+                                                           </td>
+                                                          <td>
+                                                              {{attendance_form.date}}
+
+                                                          </td>
+                                                         
+                                                       </tr>
+                                                       </tbody>
+                                                       </table>
+
+                                                    </div>
+                                               
+
+                                                       <div id="table_show_trigger_forattendance" class="col-xs-8" style="display: none; margin-left: 203px;">
+                                                          <table class="table address" border="1px">
+                                                            <tbody>
+                                                        
+                                                             <tr>
+                                                               <td><b>Department Name</b></td>
+                                                               <td id="department_name_in_view">
+                                                                  
+                                                               </td>
+                                                             </tr>
+                                                             
+                                                             <tr>
+                                                              <td><b>Date</b></td>
+                                                             <td id="to_date_view"></td>
+                                                            </tr>
+                                                           </tbody>
+                                                           </table>
+                                                           </div>
+                                                 
+                                             
+
+                                          <div class="form-group" >  
+                                           <div class="col-sm-9 col-sm-offset-2">	
+                                                   
+                                             <div class="row" >
+                                             <div class="col-sm-4"></div>
+                                             <div class="col-sm-4">
+                                             <div class="tile-stats tile-gray">
+                                             <div class="icon"><i class="entypo-chart-area"></i></div>
+
+                                             <h3 style="color: #34495e;text-align: center;"> Employee Attendance Report</h3>
+
+                                          
+
+                                             <h4 style="color:#34495e;"></h4>
+                                             </div>
+                                            </div>
+                                            <div class="col-sm-4"></div>
+                                            </div>
+
+                                            <br>
+        
+        
+                                         <center>
+                                         <a class="btn btn-default " id='present'>
+                                             <i class="fa fa-check-square-o" aria-hidden="true"></i> 
+                                             Mark All Present
+                                         </a>
+                                         <a class="btn btn-default "  id='absent'>
+
+                                             <i class="fa fa-times" aria-hidden="true"></i> 
+                                             Mark All Absent
+                                         </a>
+                                      </center>
+                                     <br><br>
+        
+        
+        
+                                    <div id="attendance_update">
+                                     <table class="table table-bordered">
+                                           <thead>
+                                             <tr>
+                                              <th>Check For Attendance</th>
+                                              <th>Employee Code</th>
+                                              <th>Employee Name</th>
+                                      
+                                              
+                                             </tr>
+                                            </thead>
+                                           <tbody id="employee_data">
+                                            
+                                             
+
+                                          </tbody>
+                                     </table>
+                                    </div>    
+                                   </div>
+                                   </div>
+        
+                        
+
+                                  </div>
+                        </div>
+
+                        <div class="form-actions margin-top-10">
+                            <div class="row">
+                                <div class="col-md-offset-2 col-md-10">
+                                  
+                                    <button type="submit" class="btn purple">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                 
+                </form>
+              </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+
+
+
+ 
+<script type="text/javascript">
+
+  $(document).ready(function() {
+
+   
+    $('#get_date').change(function(){
+        var date=$(this).val();
+        var department=$('#department').val();
+       
+        
+        var csrf='{{ csrf_token }}';
+        $('#table_show_trigger_forattendance').show();
+        $('#department_name_in_view').html(department);
+        $('#to_date_view').html(date);
+        $.ajax({
+            url:"{% url 'get_employee' %}",
+            method:'POST',
+            data:{'department':department,'csrfmiddlewaretoken':csrf},
+            success:function(data)
+            {
+              console.log(data)
+                if(data.length >0)
+                {
+               
+                      for(i=0;i<data.length;i++)
+                       {
+                      console.log(data[i]);
+                       $('#employee_data').append("<tr class='gradeX'>\
+                                                 \<td><input type='checkbox' class='check_all'  name='check_employee[]' value='"+data[i].fields.employee_code+"'></td>\
+                                                  \ <td><input type='hidden' class='employee_code' name='employee_code[]' value='"+data[i].fields.employee_code+"'>\
+                                                  "+ data[i].fields.employee_code +"</td>\
+                                                   \<td>\
+                                                   "+ data[i].fields.employee_name +"</td>");
+             
+                        }
+                  }
+                else
+                {
+                  $('#employee_data').html("<tr class='gradeX'>No Data Found</tr>");
+                }
+              
+             
+            }
+        });
+        $('#present').click(function(){
+          
+            $('.check_all').attr('checked', true);
+       
+        });
+        $('#absent').click(function(){
+        
+             $('.check_all').attr('checked', false);
+       
+        });
+    });
+});
+</script>
+
+{% endblock %}
+

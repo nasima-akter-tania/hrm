@@ -1,0 +1,210 @@
+{% extends 'backend/base.html' %}
+{% block title %}Create Employee{% endblock title %}
+{% block content %}
+<div class="page-content-wrapper">
+        <!-- BEGIN CONTENT BODY -->
+        <div class="page-content">
+            <!-- BEGIN PAGE HEADER-->
+            <!-- BEGIN THEME PANEL -->
+            <!-- END THEME PANEL -->
+            <!-- BEGIN PAGE BAR -->
+            <h3 class="page-title">
+                Order View <small>view order details</small>
+                </h3>
+                <div class="page-bar">
+                    <ul class="page-breadcrumb">
+                        <li>
+                            <i class="fa fa-home"></i>
+                            <a href="index.html">Home</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">eCommerce</a>
+                            <i class="fa fa-angle-right"></i>
+                        </li>
+                        <li>
+                            <a href="#">Order View</a>
+                        </li>
+                    </ul>
+                  
+                </div>
+<div class="row">
+
+ 
+    
+
+
+
+    <!-- BEGIN BORDERED TABLE PORTLET-->
+            <div class="col-md-10" style="margin-top: 25px;">
+              <!-- BEGIN ALERTS PORTLET-->
+              <div class="portlet purple box">
+                <div class="portlet-title">
+                  <div class="caption">
+                    <i class="fa fa-cogs"></i>Add New Employee
+                  </div>
+                  <div class="tools">
+                    <a href="javascript:;" class="collapse" data-original-title="" title="">
+                    </a>
+                    <a href="#portlet-config" data-toggle="modal" class="config" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="reload" data-original-title="" title="">
+                    </a>
+                    <a href="javascript:;" class="remove" data-original-title="" title="">
+                    </a>
+                  </div>
+                </div>
+                <div class="portlet-body form" style="display: block;">
+           
+                  <form action="" method="POST" class="form-horizontal" enctype="multipart/form-data">
+                      <div class="form-body">
+                          {% csrf_token %}
+                         
+                                              
+                          <div class="portlet-title">
+                                      
+                            <div class="caption font-green-haze">
+                                    <i class="fa fa-user"></i>&nbsp;
+                                <span class="caption-subject bold uppercase"> Basic Info </span>
+                            </div>
+                         
+                        </div>
+                        <hr>
+                          
+                            <div class="form-group">
+                                    <label class="col-md-3 control-label" for="{{form.employee_code.label_for_id}}">{{form.employee_code.label}}</label>
+                                    <div class="col-md-8">
+                                        {{form.employee_code}}
+                                        <span class="text-danger">{{form.employee_code.errors}}</span>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.employee_name.label_for_id}}">{{form.employee_name.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.employee_name}}
+                                            <span class="text-danger">{{form.employee_name.errors}}</span>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label" for="{{form.branch.label_for_id}}">{{form.branch.label}}</label>
+                                            <div class="col-md-8">
+                                                {{form.branch}}
+                                                <span class="text-danger">{{form.form.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.department.label_for_id}}">{{form.department.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.department}}
+                                            <span class="text-danger">{{form.department.errors}}</span>
+                                        </div>
+                                </div>
+                           
+                                 <div class="form-group">
+                                    <label class="col-md-3 control-label" for="{{form.designation.label_for_id}}">{{form.designation.label}}</label>
+                                    <div class="col-md-8">
+                                        {{form.designation}}
+                                        <span class="text-danger">{{form.designation.errors}}</span>
+                                    </div>
+                                 </div>
+                                    <div class="form-group">
+                                            <label class="col-md-3 control-label" for="{{form.father_name.label_for_id}}">{{form.father_name.label}}</label>
+                                            <div class="col-md-8">
+                                                {{form.father_name}}
+                                                <span class="text-danger">{{form.father_name.errors}}</span>
+                                             </div>
+                                     </div>
+                                    <div class="form-group">
+                                                    <label class="col-md-3 control-label" for="{{form.mother_name.label_for_id}}">{{form.mother_name.label}}</label>
+                                                    <div class="col-md-8">
+                                                        {{form.mother_name}}
+                                                <span class="text-danger">{{form.mother_name.errors}}</span>
+                                                        </div>
+                                    </div>
+                               
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.date_of_birth.label_for_id}}">{{form.date_of_birth.label}}</label>
+                                        <div class="col-md-8">
+                                                
+                                             
+                                         <input type="text" class="form-control input-circle" value="{{form.date_of_birth.value|date:"m/d/Y"}}"> 
+                                    <span class="text-danger">{{form.date_of_birth.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.gender.label_for_id}}">{{form.gender.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.gender}}
+                                    <span class="text-danger">{{form.gender.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.national_id.label_for_id}}">{{form.national_id.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.national_id}}
+                                    <span class="text-danger">{{form.national_id.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.nationality.label_for_id}}">{{form.nationality.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.nationality}}
+                                    <span class="text-danger">{{form.nationality.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.blood_group.label_for_id}}">{{form.blood_group.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.blood_group}}
+                                    <span class="text-danger">{{form.blood_group.errors}}</span>
+                                            </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.religion.label_for_id}}">{{form.religion.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.religion}}
+                                    <span class="text-danger">{{form.religion.errors}}</span>
+                                            </div>
+                                    </div>
+                                 
+                                 
+                                    <div class="form-group">
+                                        <label class="col-md-3 control-label" for="{{form.marital_status.label_for_id}}">{{form.marital_status.label}}</label>
+                                        <div class="col-md-8">
+                                            {{form.marital_status}}
+                                    <span class="text-danger">{{form.marital_status.errors}}</span>
+                                            </div>
+                                    </div>
+
+                                     <div class="form-group">
+                                        {{form.photo}}
+                                     </div>
+                                  
+                                  
+                    
+                        </div>
+        
+                 <div class="form-actions margin-top-10">
+                        <div class="row">
+                            <div class="col-md-offset-2 col-md-10">
+                              
+                                <button type="submit" class="btn purple">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+              </div>
+                </div>
+              </div>
+              <!-- END ALERTS PORTLET-->
+            </div>
+
+</div>
+
+</div>
+</div>
+
+
+
+            <!-- END CONTENT -->
+            <!-- BEGIN QUICK SIDEBAR -->{% endblock %}

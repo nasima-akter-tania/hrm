@@ -1,0 +1,97 @@
+<div>
+  <div id="print">
+      <div class="head_sec" style="background-color: #f8fcff;
+      padding: 1%;">
+          <h1 class="text-center">{{general_settings.company_name|upper}} EMPLOYEE REPORT</h1>
+          <p class="text-center">Address: {{general_settings.company_address}}</p>
+          <p class="text-center">Phone: {{general_settings.contact_no}}</p>
+      </div>
+      <div>
+          <p style="margin-left: 10px;">Branch :
+             <span>
+               {% if values.branch_name %}
+                  {{values.branch_name}}
+                {% else %}
+                   All Branch
+                {% endif %}
+           </span>
+          </p>
+          <p style="margin-left: 10px;">Department : 
+            <span>
+                {% if values.department %}
+                  {{values.department}}
+                {% else %}
+                  All Department
+                {% endif %}
+            </span>
+           </p>
+          <p style="margin-left: 10px;">Total Employee : <span>{{count}}</span></p>
+          <p style="margin-left: 10px;">Printing Date : <span>{{today}}</span></p>
+          <p style="margin-left: 10px;">Total Rows : <span>{{count}}</span></p>
+      </div>
+  <style>
+  table th{
+      height: 35px;
+      background-color: #cae4f1;
+  }
+  table tr:hover{
+      background-color: #e0eaf3;
+  }
+  .head_sec:hover{
+      background-color: #d3ecff;
+  }
+  </style>
+      <div>
+          <table border="1" width="100%" cellspacing="0">
+              <tr>
+                  <th class="text-center">Employee Code</th>
+                  <th class="text-center">Employee Name</th>
+                  <th class="text-center">Branch</th>
+                  <th class="text-center">Department</th>
+                  <th class="text-center">Designation</th>
+                  <th class="text-center">Date Of Birth</th>
+                  <th class="text-center">Gender</th>
+                  <th class="text-center">National Id</th>
+                  <th class="text-center">Nationality</th>
+                  <th class="text-center">Created At</th>
+              </tr>
+          {% if count > 0 %}
+              {% for employee_data_fetch in employee_data%}
+                  <tr {% if forloop.counter >= 5  and  forloop.counter <= 30 %} style='background-color: #e0eaf3;' {% endif %}>
+                      <td class="text-center">{{employee_data_fetch.employee_code}}</td>
+                      <td class="text-center">{{employee_data_fetch.employee_name}}</td>
+                      <td class="text-center">{{employee_data_fetch.branch}}</td>
+                      <td class="text-center">{{employee_data_fetch.department}}</td>
+                      <td class="text-center">{{employee_data_fetch.designation}}</td>
+                      <td class="text-center">{{employee_data_fetch.date_of_birth|date:'M d Y'}}</td>
+                      <td class="text-center">{{employee_data_fetch.gender}}</td>
+                      <td class="text-center">{{employee_data_fetch.national_id}}</td>
+                      <td class="text-center">{{employee_data_fetch.nationality}}</td>
+                      <td class="text-center">{{employee_data_fetch.created_at|date:'M d Y'}}</td>
+                  </tr>
+              {% endfor %}
+          {% else  %}
+              <tr> <td colspan="10" style="height: 40px; text-align: center;color: red;font-size: 15px">No Data Found</td></tr>
+          {% endif %}
+          </table>
+      </div>
+      </div>
+          <br><br>
+          <div class="text-center">
+              <a onclick="printDiv('print')" media='print' target="_blank" ><button  style="width: 80px;height: 35px;"><i class="fa fa-print"></i></button></a>
+          </div>
+      </div>
+  </div>
+  <script >
+  function printDiv(divName) {
+       var printContents = document.getElementById(divName).innerHTML;
+       var originalContents = document.body.innerHTML;
+  
+       document.body.innerHTML = printContents;
+  
+       window.print();
+  
+       document.body.innerHTML = originalContents;
+        window.location.reload();
+  }
+  </script>
